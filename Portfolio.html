@@ -13,6 +13,8 @@
             --primary-light: #6366F1;
             --secondary: #10B981;
             --accent: #F59E42;
+            --pink: #EC4899;
+            --purple: #A21CAF;
             --text: #181824;
             --text-light: #6B7280;
             --bg-dark: #181824;
@@ -298,8 +300,16 @@
             position: relative; display: inline-block; letter-spacing: -0.5px;
         }
         .section h2::after {
-            content: ""; position: absolute; left: 0; bottom: -5px;
-            width: 40px; height: 4px; background: var(--accent); border-radius: 2px;
+            content: "";
+            position: absolute; left: 0; bottom: -5px;
+            width: 40px; height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent), var(--primary));
+            border-radius: 2px;
+            animation: dividerMove 2.5s linear infinite alternate;
+        }
+        @keyframes dividerMove {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
         }
         /* Contact Section */
         .contact-section {
@@ -406,10 +416,17 @@
             transition: transform 0.35s cubic-bezier(.4,2,.6,1), box-shadow 0.35s cubic-bezier(.4,2,.6,1);
             border-left: 4px solid var(--primary);
             box-shadow: 0 2px 8px rgba(127,90,240,0.04);
+            opacity: 0;
+            transform: translateY(40px) scale(0.98);
+            transition: opacity 0.7s cubic-bezier(.4,2,.6,1), transform 0.7s cubic-bezier(.4,2,.6,1);
         }
         .project:hover {
             transform: translateY(-10px) scale(1.035) rotate(-1deg);
             box-shadow: 0 16px 40px rgba(127,90,240,0.18);
+        }
+        .project.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
         }
         .project h3 { color: var(--primary); margin-top: 0; margin-bottom: 15px; font-size: 1.3rem;}
         .project ul { margin-left: 20px;}
@@ -608,6 +625,42 @@
         .hero.visible .hero-content > *:nth-child(5) { transition-delay: 0.5s; }
         .hero.visible .hero-content > *:nth-child(6) { transition-delay: 0.6s; }
         .hero.visible .hero-content > *:nth-child(7) { transition-delay: 0.7s; }
+        .hero-blobs {
+            position: absolute;
+            top: -80px; left: 50%; transform: translateX(-50%);
+            width: 700px; height: 700px; z-index: 0; pointer-events: none;
+            opacity: 0.7;
+        }
+        @media (max-width: 700px) {
+            .hero-blobs { width: 350px; height: 350px; top: -40px; }
+        }
+        .skill-progress { margin-bottom: 12px; }
+        .skill-label { font-weight: 600; color: var(--primary); margin-bottom: 2px; }
+        .progress-bar {
+            background: #ececf6;
+            border-radius: 8px;
+            height: 10px;
+            width: 100%;
+            overflow: hidden;
+        }
+        .progress {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            height: 100%;
+            width: 0;
+            border-radius: 8px;
+            transition: width 1.2s cubic-bezier(.4,2,.6,1);
+        }
+        body, .section, .project, .contact-card, .certificates table {
+            transition: background 0.5s, color 0.5s;
+        }
+        .cta-btn i {
+            margin-right: 8px;
+            animation: bounceIcon 1.5s infinite alternate;
+        }
+        @keyframes bounceIcon {
+            0% { transform: translateY(0);}
+            100% { transform: translateY(-4px);}
+        }
     </style>
 </head>
 <body>
@@ -620,11 +673,12 @@
     <!-- Hero Section -->
     <section class="hero section" id="hero" data-scroll>
         <div class="hero-content">
+
             <img src="Shreyas N.jpg" alt="Shreyas Neelaraddi" class="profile-photo" />
             <h1>Shreyas Neelaraddi</h1>
-            <p class="tagline">Turning Data Into Impactful Stories</p>
+            <p class="tagline">From Raw Data to Real-World Impact</p>
             <div class="roles">
-                <span class="role">Data Scientist</span>
+                <span class="role">Data Scientist & Analyst</span>
                 <span class="role">AIML Engineer</span>
                 <span class="role">Python Developer</span>
             </div>
@@ -643,7 +697,9 @@
                 </a>
             </div>
             <a href="mailto:work.shreyasn2003@gmail.com" class="cta-btn">Let's Connect</a>
-            <a href="Shreyas N Resume.pdf" class="cta-btn" download>Download Resume</a>
+            <a href="Shreyas N Resume.pdf" class="cta-btn" download>
+                <i class="fas fa-download"></i> Download Resume
+            </a>
         </div>
     </section>
     <div class="container">
@@ -757,6 +813,10 @@
                         <span class="skill">Linux CLI</span>
                     </div>
                 </div>
+            </div>
+            <div class="skill-progress" data-percent="90">
+                <div class="skill-label">Python</div>
+                <div class="progress-bar"><div class="progress"></div></div>
             </div>
         </section>
         <!-- Education Section -->
@@ -1029,6 +1089,35 @@
                 circle.style.width = circle.style.height = Math.max(rect.width, rect.height) + 'px';
                 btn.appendChild(circle);
                 setTimeout(() => circle.remove(), 600);
+            });
+        });
+
+        // Parallax effect for hero
+        const hero = document.querySelector('.hero');
+        const heroContent = document.querySelector('.hero-content');
+        const heroBlobs = document.querySelector('.hero-blobs');
+        hero.addEventListener('mousemove', e => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 30;
+            const y = (e.clientY / window.innerHeight - 0.5) * 30;
+            heroContent.style.transform = `translate(${x}px, ${y}px)`;
+            if (heroBlobs) heroBlobs.style.transform = `translateX(-50%) scale(1.05) translate(${x/2}px, ${y/2}px)`;
+        });
+        hero.addEventListener('mouseleave', () => {
+            heroContent.style.transform = '';
+            if (heroBlobs) heroBlobs.style.transform = 'translateX(-50%)';
+        });
+
+        // Project card staggered reveal
+        document.querySelectorAll('.project').forEach((proj, i) => {
+            observer.observe(proj);
+            proj.style.transitionDelay = (0.1 + i * 0.15) + 's';
+        });
+
+        // Animate skill progress bars on scroll
+        document.querySelectorAll('.skill-progress').forEach((el, i) => {
+            observer.observe(el);
+            el.addEventListener('transitionrun', () => {
+                el.querySelector('.progress').style.width = el.dataset.percent + '%';
             });
         });
     </script>
