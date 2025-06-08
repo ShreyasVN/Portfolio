@@ -82,12 +82,7 @@
         }
         /* Hero Section */
         .hero {
-            background: linear-gradient(270deg, #4F46E5, #10B981, #F59E42, #A21CAF, #4F46E5);
-            background-size: 200% 200%;
-            animation: heroRainbow 8s ease-in-out infinite;
-            position: relative;
-            background-size: 300% 300%;
-            animation: heroGradientMove 7s ease-in-out infinite;
+            background: linear-gradient(120deg, #6366F1 0%, #4F46E5 50%, #A21CAF 80%, #EC4899 100%);
             color: #fff;
             padding: 90px 0 70px 0;
             text-align: center;
@@ -97,21 +92,11 @@
             box-shadow: 0 8px 32px rgba(79,70,229,0.10);
             overflow: hidden;
         }
-        @keyframes heroRainbow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        @keyframes heroGradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
         .hero::before {
             content: "";
             position: absolute;
             inset: 0;
-            background: rgba(255,255,255,0.08);
+            background: linear-gradient(135deg, rgba(236,72,153,0.10) 0%, rgba(99,102,241,0.10) 100%);
             z-index: 0;
             pointer-events: none;
         }
@@ -152,11 +137,14 @@
             100% { box-shadow: 0 0 48px 8px rgba(79,70,229,0.25), 0 0 0 18px rgba(16,185,129,0.13);}
         }
         .hero h1 {
-            font-size: 2.9rem; font-weight: 700;
+            font-size: 2.9rem;
+            font-weight: 700;
             margin-bottom: 0.5rem;
-            background: linear-gradient(90deg, #fff, #e0e0ff 80%);
-            -webkit-background-clip: text; background-clip: text;
+            background: linear-gradient(90deg, #fff, #F59E42 40%, #10B981 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-fill-color: transparent;
             animation: nameGlow 2.5s ease-in-out infinite alternate;
         }
         @keyframes nameGlow {
@@ -164,8 +152,13 @@
             100% { text-shadow: 0 4px 24px var(--accent), 0 0 8px var(--secondary);}
         }
         .tagline {
-            font-size: 1.3rem; font-weight: 400;
-            color: rgba(255,255,255,0.93);
+            font-size: 1.3rem;
+            font-weight: 400;
+            background: linear-gradient(90deg, #F59E42, #10B981 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-fill-color: transparent;
             margin-bottom: 1.2rem;
             min-height: 1.5em;
             position: relative;
@@ -190,8 +183,11 @@
         }
         .role {
             background: rgba(255,255,255,0.18);
-            padding: 8px 20px; border-radius: 50px;
-            color: #fff; font-weight: 500; font-size: 1.05rem;
+            padding: 8px 20px;
+            border-radius: 50px;
+            color: #10B981;
+            font-weight: 500;
+            font-size: 1.05rem;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
         .cta-btn {
