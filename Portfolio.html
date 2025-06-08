@@ -114,7 +114,7 @@
             position: relative;
             z-index: 1;
             box-shadow: 0 0 32px 0 rgba(79,70,229,0.18), 0 0 0 12px rgba(79,70,229,0.10);
-            animation: float 6s ease-in-out infinite, photoGlow 2.5s ease-in-out infinite alternate;
+            animation: float 6s ease-in-out infinite, photoGlow 2.5s ease-in-out infinite alternate, photoPulse 2.5s infinite alternate;
             background-clip: padding-box;
         }
         .profile-photo::after {
@@ -135,6 +135,10 @@
         @keyframes photoGlow {
             0% { box-shadow: 0 0 32px 0 rgba(79,70,229,0.18), 0 0 0 12px rgba(79,70,229,0.10);}
             100% { box-shadow: 0 0 48px 8px rgba(79,70,229,0.25), 0 0 0 18px rgba(16,185,129,0.13);}
+        }
+        @keyframes photoPulse {
+            0% { filter: brightness(1) drop-shadow(0 0 0px #F59E42);}
+            100% { filter: brightness(1.08) drop-shadow(0 0 16px #F59E42);}
         }
         .hero h1 {
             font-size: 2.9rem;
@@ -200,7 +204,16 @@
             position: relative;
             overflow: hidden;
         }
-        .cta-btn:hover { background: var(--accent); color: var(--text);}
+        .cta-btn:hover {
+            background: var(--accent);
+            color: var(--text);
+            animation: ctaPop 0.35s cubic-bezier(.4,2,.6,1);
+        }
+        @keyframes ctaPop {
+            0% { transform: scale(1);}
+            50% { transform: scale(1.08);}
+            100% { transform: scale(1);}
+        }
         .cta-btn .ripple {
             position: absolute;
             border-radius: 50%;
@@ -256,6 +269,10 @@
         }
         .social-link.email:hover {
             background: rgba(255, 255, 255, 0.28);
+        }
+        .social-link:hover, .social-link:focus {
+            transform: translateY(-6px) scale(1.08) rotate(-2deg);
+            box-shadow: 0 8px 24px rgba(99,102,241,0.18);
         }
         /* Main Container */
         .container {
