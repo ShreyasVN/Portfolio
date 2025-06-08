@@ -9,17 +9,18 @@
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
     <style>
         :root {
-            --primary: #7F5AF0;
-            --primary-light: #9F72F0;
-            --secondary: #2CB67D;
-            --accent: #FF8906;
-            --text: #16161a;
-            --text-light: #72757e;
-            --bg-dark: #16161a;
-            --bg-light: #f6f6fa;
+            --primary: #4F46E5;
+            --primary-light: #6366F1;
+            --secondary: #10B981;
+            --accent: #F59E42;
+            --text: #181824;
+            --text-light: #6B7280;
+            --bg-dark: #181824;
+            --bg-light: #F8FAFC;
+            --card-bg: #FFFFFF;
             --glass: rgba(255,255,255,0.7);
             --border-radius: 20px;
-            --box-shadow: 0 8px 32px rgba(127,90,240,0.13), 0 1.5px 6px rgba(44,182,125,0.08);
+            --box-shadow: 0 8px 32px rgba(79,70,229,0.13), 0 1.5px 6px rgba(16,185,129,0.08);
         }
         html { scroll-behavior: smooth; }
         body {
@@ -33,8 +34,8 @@
         body.dark-mode {
             --bg-light: #181824;
             --card-bg: #232336;
-            --text: #f6f6fa;
-            --text-light: #b0b0c3;
+            --text: #F8FAFC;
+            --text-light: #B0B0C3;
             --glass: rgba(30,30,40,0.7);
         }
         body.dark-mode .navbar {
@@ -81,26 +82,74 @@
         }
         /* Hero Section */
         .hero {
-            background: linear-gradient(120deg, var(--primary) 0%, var(--primary-light) 100%);
+            background: linear-gradient(270deg, #4F46E5, #10B981, #F59E42, #A21CAF, #4F46E5);
+            background-size: 200% 200%;
+            animation: heroRainbow 8s ease-in-out infinite;
+            position: relative;
+            background-size: 300% 300%;
+            animation: heroGradientMove 7s ease-in-out infinite;
             color: #fff;
             padding: 90px 0 70px 0;
             text-align: center;
             position: relative;
             border-bottom-left-radius: 70px 35px;
             border-bottom-right-radius: 70px 35px;
-            box-shadow: 0 8px 32px rgba(127,90,240,0.10);
+            box-shadow: 0 8px 32px rgba(79,70,229,0.10);
+            overflow: hidden;
+        }
+        @keyframes heroRainbow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes heroGradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(255,255,255,0.08);
+            z-index: 0;
+            pointer-events: none;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
         }
         .profile-photo {
             width: 300px; height: 300px;
-            border-radius: 50%; border: 6px solid #fff;
-            object-fit: cover; box-shadow: 0 0 32px rgba(0,0,0,0.13);
-            margin-bottom: 1.5rem; background: #fff;
-            animation: float 6s ease-in-out infinite;
+            border-radius: 50%;
+            border: 6px solid transparent;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            background: #fff;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 32px 0 rgba(79,70,229,0.18), 0 0 0 12px rgba(79,70,229,0.10);
+            animation: float 6s ease-in-out infinite, photoGlow 2.5s ease-in-out infinite alternate;
+            background-clip: padding-box;
         }
-        @keyframes float {
-            0% { transform: translateY(0);}
-            50% { transform: translateY(-18px);}
-            100% { transform: translateY(0);}
+        .profile-photo::after {
+            content: "";
+            position: absolute;
+            top: -8px; left: -8px; right: -8px; bottom: -8px;
+            border-radius: 50%;
+            z-index: -1;
+            background: conic-gradient(
+                var(--primary), var(--primary-light), var(--secondary), var(--accent), var(--primary)
+            );
+            animation: borderSpin 3.5s linear infinite;
+            opacity: 0.7;
+        }
+        @keyframes borderSpin {
+            100% { transform: rotate(1turn);}
+        }
+        @keyframes photoGlow {
+            0% { box-shadow: 0 0 32px 0 rgba(79,70,229,0.18), 0 0 0 12px rgba(79,70,229,0.10);}
+            100% { box-shadow: 0 0 48px 8px rgba(79,70,229,0.25), 0 0 0 18px rgba(16,185,129,0.13);}
         }
         .hero h1 {
             font-size: 2.9rem; font-weight: 700;
@@ -108,12 +157,33 @@
             background: linear-gradient(90deg, #fff, #e0e0ff 80%);
             -webkit-background-clip: text; background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: nameGlow 2.5s ease-in-out infinite alternate;
+        }
+        @keyframes nameGlow {
+            0% { text-shadow: 0 2px 12px var(--primary-light), 0 0 0 var(--accent);}
+            100% { text-shadow: 0 4px 24px var(--accent), 0 0 8px var(--secondary);}
         }
         .tagline {
             font-size: 1.3rem; font-weight: 400;
             color: rgba(255,255,255,0.93);
             margin-bottom: 1.2rem;
             min-height: 1.5em;
+            position: relative;
+            display: inline-block;
+        }
+        .tagline::after {
+            content: "";
+            display: block;
+            height: 3px;
+            width: 60%;
+            margin: 0.3em auto 0 auto;
+            border-radius: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            animation: taglineBar 2.5s linear infinite alternate;
+        }
+        @keyframes taglineBar {
+            0% { width: 40%; }
+            100% { width: 80%; }
         }
         .roles {
             display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin: 1.2rem 0;
@@ -511,6 +581,22 @@
             z-index: 999;
         }
         #backToTop.show { opacity: 1; pointer-events: auto; }
+        .hero-content > * {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(.4,2,.6,1), transform 0.8s cubic-bezier(.4,2,.6,1);
+        }
+        .hero.visible .hero-content > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .hero.visible .hero-content > *:nth-child(1) { transition-delay: 0.1s; }
+        .hero.visible .hero-content > *:nth-child(2) { transition-delay: 0.2s; }
+        .hero.visible .hero-content > *:nth-child(3) { transition-delay: 0.3s; }
+        .hero.visible .hero-content > *:nth-child(4) { transition-delay: 0.4s; }
+        .hero.visible .hero-content > *:nth-child(5) { transition-delay: 0.5s; }
+        .hero.visible .hero-content > *:nth-child(6) { transition-delay: 0.6s; }
+        .hero.visible .hero-content > *:nth-child(7) { transition-delay: 0.7s; }
     </style>
 </head>
 <body>
@@ -521,7 +607,7 @@
         <span></span>
     </div>
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero section" id="hero" data-scroll>
         <div class="hero-content">
             <img src="Shreyas N.jpg" alt="Shreyas Neelaraddi" class="profile-photo" />
             <h1>Shreyas Neelaraddi</h1>
@@ -551,7 +637,7 @@
     </section>
     <div class="container">
         <!-- Contact Info -->
-        <section class="contact-section">
+        <section class="contact-section section" id="contact" data-scroll>
             <div class="contact-grid">
                 <div class="contact-card">
                     <span class="contact-icon"><i class="fas fa-envelope"></i></span>
@@ -726,7 +812,7 @@
             <h2>Projects</h2>
             <div class="projects">
                 <div class="project">
-                    <img src="project1.jpg" alt="Sales Analytics Dashboard" class="project-img">
+                    <img src="project1.png" alt="Sales Analytics Dashboard" class="project-img">
                     <h3>Sales Analytics Dashboard</h3>
                     <p><strong>Tools:</strong> Python, SQL, Power BI</p>
                     <ul>
@@ -792,8 +878,10 @@
                             <td>VTU WIINNR (IT Ignition Program)</td>
                             <td>2025</td>
                             <td>
-                                Completed a 4-month, industry-driven internship focused on applied machine learning and business analytics.<br>
-                                Designed and deployed end-to-end ML solutions, including data pipelines, model training, and cloud-based dashboards.
+                                <ul>
+                                    <li>Completed a 4-month, industry-driven internship focused on applied machine learning and business analytics.</li>
+                                    <li>Designed and deployed end-to-end ML solutions, including data pipelines, model training, and cloud-based dashboards.</li>
+                                </ul>
                             </td>
                         </tr>
                         <tr>
@@ -801,8 +889,10 @@
                             <td>VaultofCodes</td>
                             <td>2023</td>
                             <td>
-                                Completed a hands-on internship emphasizing Python development, GUI design, and network programming.<br>
-                                Engineered and presented two fully functional software products, applying best practices in software engineering.
+                                <ul>
+                                    <li>Completed a hands-on internship emphasizing Python development, GUI design, and network programming.</li>
+                                    <li>Engineered and presented two fully functional software products, applying best practices in software engineering.</li>
+                                </ul>
                             </td>
                         </tr>
                         <tr>
@@ -810,8 +900,10 @@
                             <td>PrepInsta</td>
                             <td>2023</td>
                             <td>
-                                Completed 80+ hours of rigorous training in Python, data structures & algorithms, web development, and data science.<br>
-                                Acquired practical knowledge through project-based modules and real-world coding challenges.
+                                <ul>
+                                    <li>Completed 80+ hours of rigorous training in Python, data structures & algorithms, web development, and data science.</li>
+                                    <li>Acquired practical knowledge through project-based modules and real-world coding challenges.</li>
+                                </ul>
                             </td>
                         </tr>
                         <tr>
@@ -819,8 +911,10 @@
                             <td>TNSIF</td>
                             <td>2024</td>
                             <td>
-                                Participated in a program focused on bridging academic learning with industry requirements.<br>
-                                Developed employability skills and completed project-based learning modules.
+                                <ul>
+                                    <li>Participated in a program focused on bridging academic learning with industry requirements.</li>
+                                    <li>Developed employability skills and completed project-based learning modules.</li>
+                                </ul>
                             </td>
                         </tr>
                     </tbody>
@@ -886,7 +980,7 @@
             },
             { threshold: 0.18 }
         );
-        document.querySelectorAll('.section').forEach(section => {
+        document.querySelectorAll('.section, .hero').forEach(section => {
             observer.observe(section);
         });
 
