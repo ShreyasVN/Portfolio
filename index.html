@@ -1259,6 +1259,66 @@
         .contact-link.copy-pop:active { animation: badgePop 0.5s; }
         .contact-cta-card.contact-cta-pulse { animation: avatarPulse 2.5s infinite alternate; }
         .contact-value.contact-value-highlight:hover { background: var(--primary); color: #fff; transition: background 0.3s, color 0.3s; border-radius: 6px; padding: 0 0.3em; }
+        /* --- HERO SECTION ANIMATIONS --- */
+        .hero {
+            position: relative;
+            overflow: hidden;
+        }
+        .profile-photo.hero-avatar-pop {
+            opacity: 0;
+            transform: scale(0.7);
+            animation: heroAvatarPop 1s cubic-bezier(.4,2,.6,1) 0.1s forwards;
+        }
+        @keyframes heroAvatarPop {
+            0% { opacity: 0; transform: scale(0.7); }
+            70% { opacity: 1; transform: scale(1.12); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        .hero h1.hero-name-slide {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: heroNameSlide 1s cubic-bezier(.4,2,.6,1) 0.35s forwards;
+        }
+        @keyframes heroNameSlide {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Tagline fade-in/slide-up */
+        .tagline.hero-tagline-fade {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: heroTaglineFade 1.1s cubic-bezier(.4,2,.6,1) 0.7s forwards;
+        }
+        @keyframes heroTaglineFade {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .roles.hero-roles-stagger span {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: heroRoleStagger 0.7s cubic-bezier(.4,2,.6,1) forwards;
+        }
+        .roles.hero-roles-stagger span:nth-child(1) { animation-delay: 1.1s; }
+        .roles.hero-roles-stagger span:nth-child(2) { animation-delay: 1.25s; }
+        .roles.hero-roles-stagger span:nth-child(3) { animation-delay: 1.4s; }
+        @keyframes heroRoleStagger {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .socials-bar.hero-socials-slide {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: heroSocialsSlide 1s cubic-bezier(.4,2,.6,1) 1.7s forwards;
+        }
+        @keyframes heroSocialsSlide {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .social-link.hero-social-pop:hover {
+            transform: scale(1.13) rotate(-8deg);
+            box-shadow: 0 2px 12px rgba(79,70,229,0.18);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
     </style>
 </head>
 <body class="dark-mode">
@@ -1293,24 +1353,24 @@
     <!-- Hero Section -->
     <section class="hero" id="hero">
         <div class="hero-content">
-            <img src="Shreyas N.jpg" alt="Shreyas Neelaraddi" class="profile-photo" />
-            <h1>Shreyas Neelaraddi</h1>
-            <p class="tagline">From Raw Data to Real-World Impact</p>
-            <div class="roles">
+            <img src="Shreyas N.jpg" alt="Shreyas Neelaraddi" class="profile-photo hero-avatar-pop" />
+            <h1 class="hero-name-slide">Shreyas Neelaraddi</h1>
+            <p class="tagline hero-tagline-fade">From Raw Data to Real-World Impact</p>
+            <div class="roles hero-roles-stagger">
                 <span class="role">Data Scientist & Analyst</span>
                 <span class="role">AIML Engineer</span>
                 <span class="role">Python Developer</span>
             </div>
-            <div class="socials-bar">
-                <a href="https://www.linkedin.com/in/shreyas-n-3a5a2222b/" target="_blank" class="social-link">
+            <div class="socials-bar hero-socials-slide">
+                <a href="https://www.linkedin.com/in/shreyas-n-3a5a2222b/" target="_blank" class="social-link hero-social-pop">
                     <i class="fab fa-linkedin"></i>
                     <span>LinkedIn</span>
                 </a>
-                <a href="https://github.com/ShreyasVN" target="_blank" class="social-link">
+                <a href="https://github.com/ShreyasVN" target="_blank" class="social-link hero-social-pop">
                     <i class="fab fa-github"></i>
                     <span>GitHub</span>
                 </a>
-                <a href="mailto:work.shreyasn2003@gmail.com" class="social-link">
+                <a href="mailto:work.shreyasn2003@gmail.com" class="social-link hero-social-pop">
                     <i class="fas fa-envelope"></i>
                     <span>Email</span>
                 </a>
