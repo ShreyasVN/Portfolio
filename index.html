@@ -154,8 +154,8 @@
         }
         
         .profile-photo {
-            width: 250px;
-            height: 250px;
+            width: 300px;
+            height: 300px;
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 1.5rem;
@@ -978,6 +978,50 @@
             color: var(--text-light);
             font-size: 0.98em;
         }
+        .skill i {
+            margin-right: 0.4em;
+            color: var(--primary);
+            font-size: 1.1em;
+        }
+        .skill[data-tooltip] {
+            position: relative;
+            cursor: pointer;
+        }
+        .skill[data-tooltip]:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            left: 50%;
+            top: -2em;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: #fff;
+            padding: 0.3em 1em;
+            border-radius: 8px;
+            font-size: 0.95em;
+            white-space: nowrap;
+            z-index: 10;
+        }
+        .top-skill-badge {
+            background: var(--secondary);
+            color: #fff;
+            font-size: 0.8em;
+            font-weight: 700;
+            border-radius: 8px;
+            padding: 0.1em 0.7em;
+            margin-left: 0.5em;
+            vertical-align: middle;
+        }
+        .tech-stack-summary {
+            margin-top: 2em;
+            background: var(--glass);
+            border-radius: 12px;
+            padding: 1em 1.5em;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1.08em;
+            box-shadow: 0 2px 8px rgba(79,70,229,0.08);
+            text-align: center;
+        }
     </style>
 </head>
 <body class="dark-mode">
@@ -1130,59 +1174,81 @@
         <!-- Skills Section -->
         <section class="section" id="skills">
             <h2>Skills</h2>
-            <div class="skills-categories">
+            <div class="skills-categories stagger">
+                <!-- Example: Languages & Tools -->
                 <div class="skill-category">
-                    <h3>Languages & Tools</h3>
+                    <h3><i class="fas fa-code"></i> Languages & Tools</h3>
                     <div class="skills">
-                        <span class="skill">Python</span>
-                        <span class="skill">SQL</span>
-                        <span class="skill">Tableau</span>
-                        <span class="skill">Git</span>
-                        <span class="skill">HTML/CSS</span>
-                        <span class="skill">VS Code</span>
-                        <span class="skill">Jupyter</span>
+                        <span class="skill" data-tooltip="Advanced">
+                            <i class="fab fa-python"></i> Python
+                            <span class="top-skill-badge">Top Skill</span>
+                        </span>
+                        <span class="skill" data-tooltip="Intermediate"><i class="fas fa-database"></i> SQL</span>
+                        <span class="skill" data-tooltip="Intermediate"><i class="fas fa-chart-bar"></i> Tableau</span>
+                        <span class="skill" data-tooltip="Intermediate"><i class="fab fa-git-alt"></i> Git</span>
+                        <span class="skill" data-tooltip="Intermediate"><i class="fab fa-html5"></i> HTML/CSS</span>
+                        <span class="skill" data-tooltip="Intermediate"><i class="fas fa-code"></i> VS Code</span>
+                        <span class="skill" data-tooltip="Intermediate"><i class="fas fa-book"></i> Jupyter</span>
+                    </div>
+                    <!-- Progress bars for key skills -->
+                    <div class="skill-progress-bar" data-tooltip="Advanced">
+                        <span class="skill-label">Python</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress-bar" data-tooltip="Intermediate">
+                        <span class="skill-label">SQL</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress-bar" data-tooltip="Intermediate">
+                        <span class="skill-label">Tableau</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 75%"></div>
+                        </div>
                     </div>
                 </div>
+                <!-- Example: Data Analytics -->
                 <div class="skill-category">
-                    <h3>Data Analytics</h3>
+                    <h3><i class="fas fa-chart-line"></i> Data Analytics</h3>
                     <div class="skills">
-                        <span class="skill">pandas</span>
-                        <span class="skill">NumPy</span>
-                        <span class="skill">matplotlib</span>
-                        <span class="skill">seaborn</span>
-                        <span class="skill">EDA</span>
-                        <span class="skill">Feature Engineering</span>
+                        <span class="skill" data-tooltip="Advanced"><i class="fas fa-table"></i> pandas</span>
+                        <span class="skill" data-tooltip="Advanced"><i class="fas fa-superscript"></i> NumPy</span>
+                        <span class="skill" data-tooltip="Intermediate"><i class="fas fa-chart-area"></i> matplotlib</span>
+                        <span class="skill" data-tooltip="Intermediate"><i class="fas fa-chart-pie"></i> seaborn</span>
+                        <span class="skill" data-tooltip="Advanced"><i class="fas fa-search"></i> EDA</span>
+                        <span class="skill" data-tooltip="Intermediate"><i class="fas fa-magic"></i> Feature Engineering</span>
                     </div>
                 </div>
+                <!-- Example: Machine Learning -->
                 <div class="skill-category">
-                    <h3>Machine Learning</h3>
+                    <h3><i class="fas fa-robot"></i> Machine Learning</h3>
                     <div class="skills">
-                        <span class="skill">scikit-learn</span>
-                        <span class="skill">XGBoost</span>
-                        <span class="skill">Transformers</span>
-                        <span class="skill">OpenCV</span>
-                        <span class="skill">spaCy</span>
-                        <span class="skill">TextBlob</span>
+                        <span class="skill" data-tooltip="Intermediate"><i class="fas fa-brain"></i> scikit-learn</span>
+                        <span class="skill" data-tooltip="Intermediate"><i class="fas fa-bolt"></i> XGBoost</span>
+                        <span class="skill" data-tooltip="Beginner"><i class="fas fa-exchange-alt"></i> Transformers</span>
+                        <span class="skill" data-tooltip="Beginner"><i class="fas fa-eye"></i> OpenCV</span>
+                        <span class="skill" data-tooltip="Beginner"><i class="fas fa-language"></i> spaCy</span>
+                        <span class="skill" data-tooltip="Beginner"><i class="fas fa-comment-dots"></i> TextBlob</span>
                     </div>
                 </div>
+                <!-- Example: Cloud & Deployment -->
                 <div class="skill-category">
-                    <h3>Cloud & Deployment</h3>
+                    <h3><i class="fas fa-cloud"></i> Cloud & Deployment</h3>
                     <div class="skills">
-                        <span class="skill">Streamlit</span>
-                        <span class="skill">Flask</span>
-                        <span class="skill">Power BI</span>
-                        <span class="skill">Heroku</span>
-                        <span class="skill">OpenAI APIs</span>
+                        <span class="skill" data-tooltip="Intermediate"><i class="fas fa-stream"></i> Streamlit</span>
+                        <span class="skill" data-tooltip="Intermediate"><i class="fas fa-flask"></i> Flask</span>
+                        <span class="skill" data-tooltip="Intermediate"><i class="fas fa-chart-bar"></i> Power BI</span>
+                        <span class="skill" data-tooltip="Beginner"><i class="fab fa-heroku"></i> Heroku</span>
+                        <span class="skill" data-tooltip="Beginner"><i class="fas fa-robot"></i> OpenAI APIs</span>
                     </div>
                 </div>
             </div>
-            <div style="margin:1em 0;">
-                <div class="skill-progress-bar" data-tooltip="Advanced">
-                    <span class="skill-label">Python</span>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 90%"></div>
-                    </div>
-                </div>
+            <!-- Tech Stack Summary -->
+            <div class="tech-stack-summary">
+                <strong>Tech Stack:</strong> Python, SQL, Tableau, pandas, scikit-learn, Flask, Power BI, Git, Streamlit, Heroku, OpenAI APIs
             </div>
         </section>
 
@@ -1192,7 +1258,7 @@
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="edu-header">
-                        <img src="college_logo.png" alt="College Logo" class="edu-logo" />
+                        <img src="college_logo.jpg" alt="College Logo" class="edu-logo" />
                         <span class="edu-degree-badge">B.E. CSE</span>
                     </div>
                     <span class="timeline-date">2021 - 2025</span>
@@ -1224,7 +1290,7 @@
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="exp-header">
-                        <img src="company_logo.png" alt="Company Logo" class="exp-logo" />
+                        <img src="company_logo1.png" alt="Company Logo" class="exp-logo" />
                         <span class="exp-impact-badge"><i class="fas fa-star"></i> Impact</span>
                     </div>
                     <span class="timeline-date">Oct 2024 — Feb 2025</span>
@@ -1242,7 +1308,7 @@
                 </div>
                 <div class="timeline-item">
                     <div class="exp-header">
-                        <img src="company_logo.png" alt="Company Logo" class="exp-logo" />
+                        <img src="company_logo2.png" alt="Company Logo" class="exp-logo" />
                         <span class="exp-impact-badge"><i class="fas fa-star"></i> Impact</span>
                     </div>
                     <span class="timeline-date">Oct 2023 — Nov 2023</span>
@@ -1370,7 +1436,7 @@
                         <tr>
                             <td>PrepInsta Prime</td>
                             <td>PrepInsta</td>
-                            <td><span class="cert-badge"><i class="fas fa-certificate"></i> 2023</span></td>
+                            <td><span class="cert-badge"><i class="fas fa-certificate"></i> 2025</span></td>
                             <td>
                                 <ul>
                                     <li>Completed 80+ hours of rigorous training in Python, data structures & algorithms, web development, and data science.</li>
@@ -1386,6 +1452,18 @@
                                 <ul>
                                     <li>Participated in a program focused on bridging academic learning with industry requirements.</li>
                                     <li>Developed employability skills and completed project-based learning modules.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Data Analyst Bootcamp</td>
+                            <td>DataCamp</td>
+                            <td><span class="cert-badge"><i class="fas fa-certificate"></i> 2025</span></td>
+                            <td>
+                                <ul>
+                                    <li>Completed an intensive Data Analyst Bootcamp covering Python, SQL, data visualization, and business analytics.</li>
+                                    <li>Worked on real-world projects and case studies, mastering data wrangling, EDA, and dashboarding.</li>
+                                    <li>Earned certification on <strong>7th June 2024</strong> after passing all assessments and capstone project.</li>
                                 </ul>
                             </td>
                         </tr>
