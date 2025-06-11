@@ -1319,6 +1319,21 @@
             box-shadow: 0 2px 12px rgba(79,70,229,0.18);
             transition: transform 0.3s, box-shadow 0.3s;
         }
+        /* Add CSS for .project-impact-badge */
+        .project-impact-badge {
+            display: inline-flex;
+            align-items: center;
+            background: var(--secondary);
+            color: #fff;
+            padding: 0.3em 1em;
+            border-radius: 12px;
+            font-size: 0.98em;
+            font-weight: 600;
+            margin-left: 0.5em;
+            margin-top: 0.5em;
+            gap: 0.5em;
+            box-shadow: 0 2px 8px rgba(16,185,129,0.13);
+        }
     </style>
 </head>
 <body class="dark-mode">
@@ -1641,7 +1656,7 @@
                         <span class="project-tag live project-tag-pop"><i class="fas fa-check-circle"></i> Deployed</span>
                         <span class="project-tag dashboard project-tag-pop">Dashboard</span>
                         <span class="project-tag analytics project-tag-pop">Analytics</span>
-                        <a href="https://9000-firebase-studio-1749132767686.cluster-6dx7corvpngoivimwvvljgokdw.cloudworkstations.dev" class="cta-btn project-demo project-demo-ripple" target="_blank"><i class="fas fa-external-link-alt"></i> View Demo</a>
+                        <span class="project-impact-badge"><i class="fas fa-bolt"></i> Improved decision-making speed by 30%</span>
                     </div>
                     <p><strong>Tools:</strong> Python, SQL, Power BI</p>
                     <ul>
@@ -1659,7 +1674,7 @@
                         <span class="project-tag live project-tag-pop"><i class="fas fa-check-circle"></i> Deployed</span>
                         <span class="project-tag dashboard project-tag-pop">Dashboard</span>
                         <span class="project-tag analytics project-tag-pop">Analytics</span>
-                        <a href="https://9000-firebase-studio-1749133844576.cluster-zkm2jrwbnbd4awuedc2alqxrpk.cloudworkstations.dev" class="cta-btn project-demo project-demo-ripple"><i class="fas fa-external-link-alt"></i> View Demo</a>
+                        <span class="project-impact-badge"><i class="fas fa-heartbeat"></i> Enabled risk prediction for 100+ patients</span>
                     </div>
                     <p><strong>Tools:</strong> Python, scikit-learn, Streamlit</p>
                     <ul>
@@ -1676,7 +1691,7 @@
                         <span class="project-tag live project-tag-pop"><i class="fas fa-check-circle"></i> Deployed</span>
                         <span class="project-tag dashboard project-tag-pop">Dashboard</span>
                         <span class="project-tag analytics project-tag-pop">Analytics</span>
-                        <a href="#" class="cta-btn project-demo project-demo-ripple"><i class="fas fa-external-link-alt"></i> View Demo</a>
+                        <span class="project-impact-badge"><i class="fas fa-users"></i> Helped reduce churn by identifying at-risk customers</span>
                     </div>
                     <p><strong>Tools:</strong> Python, pandas, Tableau, SQL</p>
                     <ul>
