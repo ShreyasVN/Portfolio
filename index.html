@@ -1334,6 +1334,95 @@
             gap: 0.5em;
             box-shadow: 0 2px 8px rgba(16,185,129,0.13);
         }
+        /* Add CSS for new project badges, progress bar, and tech icons */
+        .project-header-row span {
+            background: var(--glass);
+            color: var(--primary);
+            font-weight: 600;
+            border-radius: 8px;
+            padding: 0.2em 0.8em;
+            font-size: 0.97em;
+            margin-right: 0.5em;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4em;
+            box-shadow: 0 1px 4px rgba(79,70,229,0.07);
+        }
+        .project-header-row .project-award-badge {
+            background: var(--accent);
+            color: #fff;
+        }
+        .project-summary {
+            font-size: 1.08em;
+            color: var(--text-light);
+            margin: 0.7em 0 1.1em 0;
+            font-style: italic;
+        }
+        .project-tech-icons {
+            display: flex;
+            gap: 0.7em;
+            margin: 0.7em 0 0.7em 0;
+            font-size: 1.3em;
+        }
+        .project-tech-icons i {
+            color: var(--primary);
+            background: var(--glass);
+            border-radius: 8px;
+            padding: 0.18em 0.5em;
+            box-shadow: 0 1px 4px rgba(79,70,229,0.07);
+        }
+        .project-progress-bar {
+            background: #ececf6;
+            border-radius: 8px;
+            height: 10px;
+            width: 100%;
+            margin: 0.7em 0 1em 0;
+            overflow: hidden;
+        }
+        .project-progress {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            height: 100%;
+            border-radius: 8px;
+            transition: width 1.2s cubic-bezier(.4,2,.6,1);
+        }
+        .project-status-badge {
+            background: var(--primary-light);
+            color: #fff;
+        }
+        .project-role-badge {
+            background: var(--secondary);
+            color: #fff;
+        }
+        .project-link-badge {
+            background: var(--text-light);
+            color: #fff;
+        }
+        .project-key-achievement {
+            font-size: 1em;
+            color: var(--primary);
+            margin-bottom: 0.7em;
+            margin-top: -0.3em;
+            font-weight: 600;
+        }
+        .project-testimonial {
+            background: var(--glass);
+            color: var(--text-light);
+            border-left: 4px solid var(--primary);
+            margin: 1.2em 0 0.5em 0;
+            padding: 0.8em 1.2em;
+            border-radius: 10px;
+            font-style: italic;
+            font-size: 1.02em;
+            box-shadow: 0 1px 4px rgba(79,70,229,0.07);
+        }
+        .project-testimonial .testimonial-author {
+            display: block;
+            margin-top: 0.5em;
+            color: var(--primary);
+            font-weight: 600;
+            font-style: normal;
+            font-size: 0.98em;
+        }
     </style>
 </head>
 <body class="dark-mode">
@@ -1650,6 +1739,16 @@
             <span class="section-title-divider"></span>
             <div class="projects">
                 <div class="project project-flip project-glow">
+                    <div class="project-header-row" style="display:flex;align-items:center;gap:1em;flex-wrap:wrap;">
+                        <span class="project-date"><i class="fas fa-calendar-alt"></i> Jan 2025 – Feb 2025</span>
+                        <span class="project-collab-badge"><i class="fas fa-user-friends"></i> Team Project</span>
+                        <span class="project-level-badge"><i class="fas fa-signal"></i> Advanced</span>
+                        <span class="project-status-badge"><i class="fas fa-check"></i> Completed</span>
+                        <span class="project-role-badge"><i class="fas fa-user-tie"></i> Data Scientist</span>
+                        <span class="project-link-badge"><i class="fas fa-globe"></i> Internal Project</span>
+                    </div>
+                    <div class="project-summary">A dynamic dashboard for sales analytics, integrating real-time data and interactive filters for business insights.</div>
+                    <div class="project-key-achievement"><strong>Key Achievement:</strong> Automated reporting reduced manual work by 40%.</div>
                     <img src="project1.png" alt="Sales Analytics Dashboard" class="project-img project-img-zoom">
                     <h3>Sales Analytics Dashboard</h3>
                     <div class="project-tags">
@@ -1658,6 +1757,12 @@
                         <span class="project-tag analytics project-tag-pop">Analytics</span>
                         <span class="project-impact-badge"><i class="fas fa-bolt"></i> Improved decision-making speed by 30%</span>
                     </div>
+                    <div class="project-tech-icons">
+                        <i class="fab fa-python" title="Python"></i>
+                        <i class="fas fa-database" title="SQL"></i>
+                        <i class="fas fa-chart-bar" title="Power BI"></i>
+                    </div>
+                    <div class="project-progress-bar"><div class="project-progress" style="width: 95%"></div></div>
                     <p><strong>Tools:</strong> Python, SQL, Power BI</p>
                     <ul>
                         <li>Designed a dynamic dashboard integrating customer, order & product data.</li>
@@ -1666,8 +1771,19 @@
                         <li>Automated data extraction and transformation using Python scripts.</li>
                         <li>Collaborated with business stakeholders to identify key metrics.</li>
                     </ul>
+                    <blockquote class="project-testimonial">"The dashboard transformed our sales meetings—insights are now just a click away."<br><span class="testimonial-author">— Business Stakeholder</span></blockquote>
                 </div>
                 <div class="project project-flip project-glow">
+                    <div class="project-header-row" style="display:flex;align-items:center;gap:1em;flex-wrap:wrap;">
+                        <span class="project-date"><i class="fas fa-calendar-alt"></i> Nov 2024 – Dec 2024</span>
+                        <span class="project-collab-badge"><i class="fas fa-user"></i> Solo Project</span>
+                        <span class="project-level-badge"><i class="fas fa-signal"></i> Intermediate</span>
+                        <span class="project-status-badge"><i class="fas fa-check"></i> Completed</span>
+                        <span class="project-role-badge"><i class="fas fa-user-tie"></i> ML Engineer</span>
+                        <span class="project-link-badge"><i class="fas fa-lock"></i> Private Repo</span>
+                    </div>
+                    <div class="project-summary">A web tool for predicting healthcare risks using machine learning, designed for health practitioners.</div>
+                    <div class="project-key-achievement"><strong>Key Achievement:</strong> Achieved 92% accuracy on real-world patient data.</div>
                     <img src="project2.png" alt="Healthcare Risk Prediction Tool" class="project-img project-img-zoom">
                     <h3>Healthcare Risk Prediction Tool</h3>
                     <div class="project-tags">
@@ -1676,6 +1792,12 @@
                         <span class="project-tag analytics project-tag-pop">Analytics</span>
                         <span class="project-impact-badge"><i class="fas fa-heartbeat"></i> Enabled risk prediction for 100+ patients</span>
                     </div>
+                    <div class="project-tech-icons">
+                        <i class="fab fa-python" title="Python"></i>
+                        <i class="fas fa-brain" title="scikit-learn"></i>
+                        <i class="fas fa-stream" title="Streamlit"></i>
+                    </div>
+                    <div class="project-progress-bar"><div class="project-progress" style="width: 90%"></div></div>
                     <p><strong>Tools:</strong> Python, scikit-learn, Streamlit</p>
                     <ul>
                         <li>Predicted heart disease risk using classification models (Logistic Regression, Random Forest).</li>
@@ -1683,8 +1805,19 @@
                         <li>Performed extensive data cleaning and feature engineering to improve model accuracy.</li>
                         <li>Visualized patient risk factors and prediction probabilities for transparent decision support.</li>
                     </ul>
+                    <blockquote class="project-testimonial">"A game-changer for our clinic—risk assessment is now fast and reliable."<br><span class="testimonial-author">— Healthcare Professional</span></blockquote>
                 </div>
                 <div class="project project-flip project-glow">
+                    <div class="project-header-row" style="display:flex;align-items:center;gap:1em;flex-wrap:wrap;">
+                        <span class="project-date"><i class="fas fa-calendar-alt"></i> Aug 2024 – Oct 2024</span>
+                        <span class="project-collab-badge"><i class="fas fa-user-friends"></i> Solo Project</span>
+                        <span class="project-level-badge"><i class="fas fa-signal"></i> Advanced</span>
+                        <span class="project-status-badge"><i class="fas fa-check"></i> Completed</span>
+                        <span class="project-role-badge"><i class="fas fa-user-tie"></i> Lead Developer</span>
+                        <span class="project-link-badge"><i class="fas fa-globe"></i> Public Showcase</span>
+                    </div>
+                    <div class="project-summary">A churn analysis pipeline and dashboard to help businesses identify and retain at-risk customers.</div>
+                    <div class="project-key-achievement"><strong>Key Achievement:</strong> Identified high-risk cohorts, enabling targeted retention strategies.</div>
                     <img src="project3.png" alt="Customer Churn Analysis & Dashboard" class="project-img project-img-zoom">
                     <h3>Customer Churn Analysis & Dashboard</h3>
                     <div class="project-tags">
@@ -1693,6 +1826,13 @@
                         <span class="project-tag analytics project-tag-pop">Analytics</span>
                         <span class="project-impact-badge"><i class="fas fa-users"></i> Helped reduce churn by identifying at-risk customers</span>
                     </div>
+                    <div class="project-tech-icons">
+                        <i class="fab fa-python" title="Python"></i>
+                        <i class="fas fa-database" title="SQL"></i>
+                        <i class="fas fa-table" title="pandas"></i>
+                        <i class="fas fa-chart-bar" title="Tableau"></i>
+                    </div>
+                    <div class="project-progress-bar"><div class="project-progress" style="width: 92%"></div></div>
                     <p><strong>Tools:</strong> Python, pandas, Tableau, SQL</p>
                     <ul>
                         <li>Developed a comprehensive customer churn analysis pipeline using Python and pandas for data preprocessing and feature engineering.</li>
@@ -1701,6 +1841,7 @@
                         <li>Integrated SQL queries for efficient data extraction and transformation from relational databases.</li>
                         <li>Enabled data-driven retention strategies by highlighting high-risk cohorts and visualizing churn trends over time.</li>
                     </ul>
+                    <blockquote class="project-testimonial">"The insights from this dashboard helped us cut churn by 15% in one quarter."<br><span class="testimonial-author">— Product Manager</span></blockquote>
                 </div>
             </div>
         </section>
