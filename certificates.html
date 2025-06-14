@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shreyas N - Certificates & Achievements</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Add PDF.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+        // Set worker path for PDF.js
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    </script>
+    <style>
+        :root {
+            /* Primary Theme Colors */
+            --primary-100: #E0E7FF;
+            --primary-200: #C7D2FE;
+            --primary-300: #A5B4FC;
+            --primary-400: #818CF8;
+            --primary-500: #6366F1;
+            --primary-600: #4F46E5;
+            --primary-700: #4338CA;
+            
+            /* Secondary Theme Colors */
+            --secondary-100: #CCFBF1;
+            --secondary-200: #99F6E4;
+            --secondary-300: #5EEAD4;
+            --secondary-400: #2DD4BF;
+            --secondary-500: #14B8A6;
+            --secondary-600: #0D9488;
+            --secondary-700: #0F766E;
+
+            /* Gradients */
+            --bg-gradient: linear-gradient(135deg, var(--primary-100) 0%, var(--secondary-100) 100%);
+            --card-gradient: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+            --btn-gradient: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 100%);
+            --btn-hover-gradient: linear-gradient(135deg, var(--secondary-500) 0%, var(--secondary-600) 100%);
+            --tag-gradient: linear-gradient(135deg, var(--primary-100) 0%, var(--primary-200) 100%);
+            
+            /* Functional Colors */
+            --primary: var(--primary-600);
+            --secondary: var(--secondary-500);
+            --accent: var(--secondary-400);
+            --text: #1E293B;
+            --text-light: #64748B;
+            --text-lighter: #94A3B8;
+            
+            /* UI Elements */
+            --border-radius: 16px;
+            --box-shadow: 0 4px 16px rgba(99, 102, 241, 0.1);
+            --box-shadow-hover: 0 8px 24px rgba(99, 102, 241, 0.15);
+            --box-shadow-active: 0 2px 8px rgba(99, 102, 241, 0.2);
+        }
+
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .header h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 1.5rem auto;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--btn-gradient);
+            color: white;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            box-shadow: var(--box-shadow);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            background: var(--btn-hover-gradient);
+            box-shadow: var(--box-shadow-hover);
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            border: none;
+            border-radius: 25px;
+            background: white;
+            color: var(--text);
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+
+        .category-filters {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .category-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--primary-200);
+            border-radius: 20px;
+            background: white;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--tag-gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .category-btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .category-btn.active {
+            background: var(--btn-gradient);
+            color: white;
+            border-color: transparent;
+        }
+
+        .category-btn:hover:not(.active) {
+            transform: translateY(-2px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .category-btn:hover:not(.active)::before {
+            opacity: 1;
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        .certificate-card {
+            background: var(--card-gradient);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: var(--box-shadow);
+            position: relative;
+            will-change: transform;
+            contain: content;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: var(--box-shadow-hover);
+            border-color: var(--primary-200);
+        }
+
+        .certificate-img {
+            width: 100%;
+            height: 200px;
+            border-bottom: 2px solid var(--primary);
+            transition: all 0.3s ease;
+            background: #f8fafc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .certificate-img::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #f1f5f9, #e2e8f0);
+            opacity: 0.7;
+        }
+
+        .certificate-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            animation: fadeIn 0.3s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .certificate-img.loading::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--primary-100);
+            border-top: 3px solid var(--primary-600);
+            border-right: 3px solid var(--secondary-500);
+            border-radius: 50%;
+            animation: spin 1s cubic-bezier(0.76, 0.25, 0.24, 0.99) infinite;
+            z-index: 2;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .certificate-img.error::after {
+            content: 'Preview not available';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--text-light);
+            font-size: 0.9rem;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .certificate-img.pdf-preview {
+            background: linear-gradient(45deg, #f1f5f9, #e2e8f0);
+            padding: 0; /* Remove padding to fit canvas */
+        }
+
+        .certificate-img.pdf-preview.loading {
+            padding: 2rem;
+        }
+
+        .certificate-img.pdf-preview.loading i {
+            font-size: 4rem;
+            color: var(--primary);
+            opacity: 0.8;
+            z-index: 1;
+        }
+
+        .certificate-img canvas {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            position: relative;
+            z-index: 1;
+        }
+
+        .certificate-img.pdf-preview::after {
+            content: 'PDF Certificate';
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .certificate-info {
+            padding: 1.5rem;
+        }
+
+        .certificate-info h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+
+        .certificate-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .certificate-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .certificate-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .certificate-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background: var(--tag-gradient);
+            color: var(--primary-700);
+            padding: 0.2rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid var(--primary-200);
+        }
+
+        .tag:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .view-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--btn-gradient);
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--box-shadow);
+        }
+
+        .view-btn:hover {
+            background: var(--btn-hover-gradient);
+            transform: translateY(-2px);
+            box-shadow: var(--box-shadow-hover);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            background: var(--card-gradient);
+            padding: 1.5rem 2.5rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            min-width: 200px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--tag-gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--box-shadow);
+            border-color: var(--primary-200);
+        }
+
+        .stat-card:hover::before {
+            opacity: 0.5;
+        }
+
+        .stat-card h3 {
+            color: var(--primary-600);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(135deg, var(--primary-600), var(--secondary-500));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        .stat-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .certificates-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-box {
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+            Back to Portfolio
+        </a>
+
+        <header class="header">
+            <h1>My Certificates & Achievements</h1>
+            <p>A comprehensive collection of my professional certifications, showcasing my expertise across Data Science, AI/ML, Programming, and more.</p>
+        </header>
+
+        <div class="stats">
+            <div class="stat-card">
+                <h3>45+</h3>
+                <p>Total Certificates</p>
+            </div>
+            <div class="stat-card">
+                <h3>10</h3>
+                <p>Different Domains</p>
+            </div>
+            <div class="stat-card">
+                <h3>5+</h3>
+                <p>Years of Learning</p>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search certificates..." id="searchInput" oninput="filterCertificates()">
+            </div>
+            <div class="category-filters">
+                <button class="category-btn active" data-category="all">All</button>
+                <button class="category-btn" data-category="data-analytics">Data Analytics</button>
+                <button class="category-btn" data-category="ai-ml">AI & ML</button>
+                <button class="category-btn" data-category="programming">Programming</button>
+                <button class="category-btn" data-category="web-dev">Web Development</button>
+                <button class="category-btn" data-category="cloud">Cloud & DevOps</button>
+                <button class="category-btn" data-category="business">Business Intelligence</button>
+                <button class="category-btn" data-category="other">Other</button>
+            </div>
+        </div>
+
+        <div class="certificates-grid">
+            <!-- Data Analytics Certificates -->
+            <div class="certificate-card" data-category="data-analytics">
+                <div class="certificate-img pdf-preview">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="certificate-info">
+                    <div class="certificate-tags">
+                        <span class="tag">IBM</span>
+                        <span class="tag">Data Analytics</span>
+                    </div>
+                    <h3>IBM Data Analytics</h3>
+                    <p>Professional Data Analytics certification from IBM</p>
+                    <div class="certificate-meta">
+                        <span><i class="far fa-calendar"></i> 2023</span>
+                        <span><i class="fas fa-award"></i> Professional</span>
+                    </div>
+                    <a href="IBM DA.pdf" target="_blank" class="view-btn">
+                        <i class="fas fa-file-pdf"></i>
+                        View Certificate
+                    </a>
+                </div>
+            </div>
+
+            <div class="certificate-card" data-category="data-analytics">
+                <div class="certificate-img pdf-preview">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="certificate-info">
+                    <div class="certificate-tags">
+                        <span class="tag">BCG</span>
+                        <span class="tag">Data Analytics</span>
+                    </div>
+                    <h3>BCG Data Analytics Virtual Experience</h3>
+                    <p>Data Analytics program by Boston Consulting Group</p>
+                    <div class="certificate-meta">
+                        <span><i class="far fa-calendar"></i> 2023</span>
+                        <span><i class="fas fa-award"></i> Advanced</span>
+                    </div>
+                    <a href="Forage BCGX DA.pdf" target="_blank" class="view-btn">
+                        <i class="fas fa-file-pdf"></i>
+                        View Certificate
+                    </a>
+                </div>
+            </div>
+
+            <!-- AI & ML Certificates -->
+            <div class="certificate-card" data-category="ai-ml">
+                <div class="certificate-img">
+                    <!-- Image will be loaded dynamically -->
+                </div>
+                <div class="certificate-info">
+                    <div class="certificate-tags">
+                        <span class="tag">AI</span>
+                        <span class="tag">Engineering</span>
+                    </div>
+                    <h3>AI Engineer Certificate</h3>
+                    <p>Advanced certification in AI Engineering and Implementation</p>
+                    <div class="certificate-meta">
+                        <span><i class="far fa-calendar"></i> 2023</span>
+                        <span><i class="fas fa-award"></i> Professional</span>
+                    </div>
+                    <a href="AI Engineer-Certificate.png" target="_blank" class="view-btn">
+                        <i class="fas fa-external-link-alt"></i>
+                        View Certificate
+                    </a>
+                </div>
+            </div>
+
+            <div class="certificate-card" data-category="ai-ml">
+                <div class="certificate-img pdf-preview">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="certificate-info">
+                    <div class="certificate-tags">
+                        <span class="tag">NLP</span>
+                        <span class="tag">Deep Learning</span>
+                    </div>
+                    <h3>NLP and Deep Learning</h3>
+                    <p>Advanced certification in Natural Language Processing and Deep Learning</p>
+                    <div class="certificate-meta">
+                        <span><i class="far fa-calendar"></i> 2023</span>
+                        <span><i class="fas fa-award"></i> Advanced</span>
+                    </div>
+                    <a href="certificate_NLP and Deep Learning_726230.pdf" target="_blank" class="view-btn">
+                        <i class="fas fa-file-pdf"></i>
+                        View Certificate
+                    </a>
+                </div>
+            </div>
+
+            <!-- Programming Certificates -->
+            <div class="certificate-card" data-category="programming">
+                <div class="certificate-img pdf-preview">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="certificate-info">
+                    <div class="certificate-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">DSA</span>
+                    </div>
+                    <h3>DSA in Python</h3>
+                    <p>Data Structures and Algorithms implementation in Python</p>
+                    <div class="certificate-meta">
+                        <span><i class="far fa-calendar"></i> 2023</span>
+                        <span><i class="fas fa-award"></i> Advanced</span>
+                    </div>
+                    <a href="certificate_DSA in Python_726230.pdf" target="_blank" class="view-btn">
+                        <i class="fas fa-file-pdf"></i>
+                        View Certificate
+                    </a>
+                </div>
+            </div>
+
+            <!-- Web Development Certificates -->
+            <div class="certificate-card" data-category="web-dev">
+                <div class="certificate-img pdf-preview">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="certificate-info">
+                    <div class="certificate-tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">Frontend</span>
+                    </div>
+                    <h3>HTML5 Development</h3>
+                    <p>Comprehensive HTML5 web development certification</p>
+                    <div class="certificate-meta">
+                        <span><i class="far fa-calendar"></i> 2023</span>
+                        <span><i class="fas fa-award"></i> Professional</span>
+                    </div>
+                    <a href="certificate_HTML_726230.pdf" target="_blank" class="view-btn">
+                        <i class="fas fa-file-pdf"></i>
+                        View Certificate
+                    </a>
+                </div>
+            </div>
+
+            <!-- Cloud & DevOps Certificates -->
+            <div class="certificate-card" data-category="cloud">
+                <div class="certificate-img pdf-preview">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="certificate-info">
+                    <div class="certificate-tags">
+                        <span class="tag">Cloud</span>
+                        <span class="tag">Computing</span>
+                    </div>
+                    <h3>Cloud Computing</h3>
+                    <p>Fundamentals and advanced concepts of cloud computing</p>
+                    <div class="certificate-meta">
+                        <span><i class="far fa-calendar"></i> 2023</span>
+                        <span><i class="fas fa-award"></i> Professional</span>
+                    </div>
+                    <a href="certificate_Cloud Computing_726230.pdf" target="_blank" class="view-btn">
+                        <i class="fas fa-file-pdf"></i>
+                        View Certificate
+                    </a>
+                </div>
+            </div>
+
+            <!-- Business Intelligence Certificates -->
+            <div class="certificate-card" data-category="business">
+                <div class="certificate-img pdf-preview">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="certificate-info">
+                    <div class="certificate-tags">
+                        <span class="tag">Power BI</span>
+                        <span class="tag">Analytics</span>
+                    </div>
+                    <h3>Power BI & Business Intelligence</h3>
+                    <p>Advanced data visualization and business intelligence with Power BI</p>
+                    <div class="certificate-meta">
+                        <span><i class="far fa-calendar"></i> 2023</span>
+                        <span><i class="fas fa-award"></i> Professional</span>
+                    </div>
+                    <a href="certificate_Power BI & Business Intelligence_726230.pdf" target="_blank" class="view-btn">
+                        <i class="fas fa-file-pdf"></i>
+                        View Certificate
+                    </a>
+                </div>
+            </div>
+
+            <!-- Continue adding more certificates following the same pattern -->
+            
+            <!-- More Data Analytics Certificates -->
+            <div class="certificate-card" data-category="data-analytics">
+                <div class="certificate-img pdf-preview">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="certificate-info">
+                    <div class="certificate-tags">
+                        <span class="tag">Tata</span>
+                        <span class="tag">Data Analytics</span>
+                    </div>
+                    <h3>Tata Data Analytics</h3>
+                    <p>Data Analytics virtual experience program by Tata Group</p>
+                    <div class="certificate-meta">
+                        <span><i class="far fa-calendar"></i> 2023</span>
+                        <span><i class="fas fa-award"></i> Professional</span>
+                    </div>
+                    <a href="Forage Tata DA.pdf" target="_blank" class="view-btn">
+                        <i class="fas fa-file-pdf"></i>
+                        View Certificate
+                    </a>
+                </div>
+            </div>
+
+            <div class="certificate-card" data-category="data-analytics">
+                <div class="certificate-img pdf-preview">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="certificate-info">
+                    <div class="certificate-tags">
+                        <span class="tag">Deloitte</span>
+                        <span class="tag">Data Analytics</span>
+                    </div>
+                    <h3>Deloitte Data Analytics</h3>
+                    <p>Data Analytics virtual experience by Deloitte</p>
+                    <div class="certificate-meta">
+                        <span><i class="far fa-calendar"></i> 2023</span>
+                        <span><i class="fas fa-award"></i> Professional</span>
+                    </div>
+                    <a href="Forage Deloitte DA.pdf" target="_blank" class="view-btn">
+                        <i class="fas fa-file-pdf"></i>
+                        View Certificate
+                    </a>
+                </div>
+            </div>
+
+            <!-- More Programming Certificates -->
+            <div class="certificate-card" data-category="programming">
+                <div class="certificate-img">
+                    <img src="ShreyasN2932003 - Intro to Programming.png" alt="Intro to Programming Certificate">
+                </div>
+                <div class="certificate-info">
+                    <div class="certificate-tags">
+                        <span class="tag">Programming</span>
+                        <span class="tag">Fundamentals</span>
+                    </div>
+                    <h3>Introduction to Programming</h3>
+                    <p>Comprehensive introduction to programming concepts and practices</p>
+                    <div class="certificate-meta">
+                        <span><i class="far fa-calendar"></i> 2023</span>
+                        <span><i class="fas fa-award"></i> Foundation</span>
+                    </div>
+                    <a href="ShreyasN2932003 - Intro to Programming.png" target="_blank" class="view-btn">
+                        <i class="fas fa-external-link-alt"></i>
+                        View Certificate
+                    </a>
+                </div>
+            </div>
+
+            <div class="certificate-card" data-category="programming">
+                <div class="certificate-img pdf-preview">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="certificate-info">
+                    <div class="certificate-tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">ES6</span>
+                    </div>
+                    <h3>JavaScript ES6</h3>
+                    <p>Modern JavaScript and ES6+ features certification</p>
+                    <div class="certificate-meta">
+                        <span><i class="far fa-calendar"></i> 2023</span>
+                        <span><i class="fas fa-award"></i> Advanced</span>
+                    </div>
+                    <a href="certificate_Java Script Es6_726230.pdf" target="_blank" class="view-btn">
+                        <i class="fas fa-file-pdf"></i>
+                        View Certificate
+                    </a>
+                </div>
+            </div>
+
+            <!-- More Web Development Certificates -->
+            <div class="certificate-card" data-category="web-dev">
+                <div class="certificate-img pdf-preview">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="certificate-info">
+                    <div class="certificate-tags">
+                        <span class="tag">CSS</span>
+                        <span class="tag">Frontend</span>
+                    </div>
+                    <h3>CSS Development</h3>
+                    <p>Advanced CSS and modern styling techniques</p>
+                    <div class="certificate-meta">
+                        <span><i class="far fa-calendar"></i> 2023</span>
+                        <span><i class="fas fa-award"></i> Professional</span>
+                    </div>
+                    <a href="certificate_CSS_726230.pdf" target="_blank" class="view-btn">
+                        <i class="fas fa-file-pdf"></i>
+                        View Certificate
+                    </a>
+                </div>
+            </div>
+
+            <div class="certificate-card" data-category="web-dev">
+                <div class="certificate-img pdf-preview">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="certificate-info">
+                    <div class="certificate-tags">
+                        <span class="tag">Express.js</span>
+                        <span class="tag">Backend</span>
+                    </div>
+                    <h3>Express.js Development</h3>
+                    <p>Backend development with Express.js - Pokemon Project</p>
+                    <div class="certificate-meta">
+                        <span><i class="far fa-calendar"></i> 2023</span>
+                        <span><i class="fas fa-award"></i> Advanced</span>
+                    </div>
+                    <a href="certificate_ExpressJs - Pokemon Project_726230.pdf" target="_blank" class="view-btn">
+                        <i class="fas fa-file-pdf"></i>
+                        View Certificate
+                    </a>
+                </div>
+            </div>
+
+            <!-- DevOps Certificates -->
+            <div class="certificate-card" data-category="cloud">
+                <div class="certificate-img pdf-preview">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="certificate-info">
+                    <div class="certificate-tags">
+                        <span class="tag">Git</span>
+                        <span class="tag">Version Control</span>
+                    </div>
+                    <h3>Git Version Control</h3>
+                    <p>Professional Git version control system certification</p>
+                    <div class="certificate-meta">
+                        <span><i class="far fa-calendar"></i> 2023</span>
+                        <span><i class="fas fa-award"></i> Professional</span>
+                    </div>
+                    <a href="certificate_Git_726230.pdf" target="_blank" class="view-btn">
+                        <i class="fas fa-file-pdf"></i>
+                        View Certificate
+                    </a>
+                </div>
+            </div>
+
+            <div class="certificate-card" data-category="cloud">
+                <div class="certificate-img pdf-preview">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="certificate-info">
+                    <div class="certificate-tags">
+                        <span class="tag">GitHub</span>
+                        <span class="tag">Collaboration</span>
+                    </div>
+                    <h3>GitHub</h3>
+                    <p>GitHub platform and collaboration tools certification</p>
+                    <div class="certificate-meta">
+                        <span><i class="far fa-calendar"></i> 2023</span>
+                        <span><i class="fas fa-award"></i> Professional</span>
+                    </div>
+                    <a href="certificate_GitHub_726230.pdf" target="_blank" class="view-btn">
+                        <i class="fas fa-file-pdf"></i>
+                        View Certificate
+                    </a>
+                </div>
+            </div>
+
+            <!-- Data Science & ML Projects -->
+            <div class="certificate-card" data-category="ai-ml">
+                <div class="certificate-img pdf-preview">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="certificate-info">
+                    <div class="certificate-tags">
+                        <span class="tag">ML</span>
+                        <span class="tag">Pokemon</span>
+                    </div>
+                    <h3>Pokemon Prediction Project</h3>
+                    <p>Machine Learning project for Pokemon prediction analysis</p>
+                    <div class="certificate-meta">
+                        <span><i class="far fa-calendar"></i> 2023</span>
+                        <span><i class="fas fa-award"></i> Project</span>
+                    </div>
+                    <a href="certificate_Pokemon Prediction_726230.pdf" target="_blank" class="view-btn">
+                        <i class="fas fa-file-pdf"></i>
+                        View Certificate
+                    </a>
+                </div>
+            </div>
+
+            <!-- Business Analytics -->
+            <div class="certificate-card" data-category="business">
+                <div class="certificate-img pdf-preview">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="certificate-info">
+                    <div class="certificate-tags">
+                        <span class="tag">Tableau</span>
+                        <span class="tag">Visualization</span>
+                    </div>
+                    <h3>Tableau</h3>
+                    <p>Data visualization and analytics with Tableau</p>
+                    <div class="certificate-meta">
+                        <span><i class="far fa-calendar"></i> 2023</span>
+                        <span><i class="fas fa-award"></i> Professional</span>
+                    </div>
+                    <a href="certificate_Tableau_726230.pdf" target="_blank" class="view-btn">
+                        <i class="fas fa-file-pdf"></i>
+                        View Certificate
+                    </a>
+                </div>
+            </div>
+
+            <!-- Other Certifications -->
+            <div class="certificate-card" data-category="other">
+                <div class="certificate-img pdf-preview">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="certificate-info">
+                    <div class="certificate-tags">
+                        <span class="tag">QA</span>
+                        <span class="tag">Testing</span>
+                    </div>
+                    <h3>QA Analyst</h3>
+                    <p>Quality Assurance and Software Testing certification</p>
+                    <div class="certificate-meta">
+                        <span><i class="far fa-calendar"></i> 2023</span>
+                        <span><i class="fas fa-award"></i> Professional</span>
+                    </div>
+                    <a href="certificate_QA Analyst_726230.pdf" target="_blank" class="view-btn">
+                        <i class="fas fa-file-pdf"></i>
+                        View Certificate
+                    </a>
+                </div>
+            </div>
+
+            <div class="certificate-card" data-category="other">
+                <div class="certificate-img pdf-preview">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="certificate-info">
+                    <div class="certificate-tags">
+                        <span class="tag">Statistics</span>
+                        <span class="tag">Analysis</span>
+                    </div>
+                    <h3>Statistics</h3>
+                    <p>Advanced statistical analysis and probability theory</p>
+                    <div class="certificate-meta">
+                        <span><i class="far fa-calendar"></i> 2023</span>
+                        <span><i class="fas fa-award"></i> Advanced</span>
+                    </div>
+                    <a href="certificate_Statistics_726230.pdf" target="_blank" class="view-btn">
+                        <i class="fas fa-file-pdf"></i>
+                        View Certificate
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // PDF preview functionality
+        async function loadPdfPreview(url, container) {
+            try {
+                container.classList.add('loading');
+                
+                // Load the PDF document
+                const loadingTask = pdfjsLib.getDocument(url);
+                const pdf = await loadingTask.promise;
+
+                // Get the first page
+                const page = await pdf.getPage(1);
+
+                // Calculate dimensions to fit container while maintaining aspect ratio
+                const viewport = page.getViewport({ scale: 1 });
+                const containerWidth = container.clientWidth;
+                const containerHeight = container.clientHeight;
+                const scale = Math.min(
+                    containerWidth / viewport.width,
+                    containerHeight / viewport.height
+                );
+                const scaledViewport = page.getViewport({ scale });
+
+                // Create canvas and context
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.width = scaledViewport.width;
+                canvas.height = scaledViewport.height;
+
+                // Render PDF page to canvas
+                const renderContext = {
+                    canvasContext: context,
+                    viewport: scaledViewport
+                };
+
+                await page.render(renderContext).promise;
+
+                // Clear loading state and add canvas
+                container.innerHTML = '';
+                container.classList.remove('loading');
+                container.appendChild(canvas);
+
+            } catch (error) {
+                console.error('Error loading PDF:', error);
+                container.classList.remove('loading');
+                container.classList.add('error');
+                container.innerHTML = '<i class="fas fa-file-pdf"></i><div>Preview not available</div>';
+            }
+        }
+
+        // Enhanced lazy loading with PDF support
+        document.addEventListener('DOMContentLoaded', function() {
+            const certificateContainers = document.querySelectorAll('.certificate-img');
+            
+            const loadContent = (container) => {
+                const link = container.closest('.certificate-card').querySelector('.view-btn').href;
+                const isPdf = link.toLowerCase().endsWith('.pdf');
+
+                if (isPdf) {
+                    container.classList.add('pdf-preview', 'loading');
+                    container.innerHTML = '<i class="fas fa-file-pdf"></i>';
+                    loadPdfPreview(link, container);
+                } else {
+                    // Handle image loading
+                    const card = container.closest('.certificate-card');
+                    const link = card.querySelector('.view-btn').href;
+                    const title = card.querySelector('h3').textContent;
+                    
+                    const img = new Image();
+                    container.classList.add('loading');
+                    container.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                    
+                    img.onload = () => {
+                        container.innerHTML = '';
+                        container.appendChild(img);
+                        container.classList.remove('loading');
+                        // Add zoom effect on hover
+                        img.style.transition = 'transform 0.3s ease';
+                        container.addEventListener('mouseenter', () => img.style.transform = 'scale(1.05)');
+                        container.addEventListener('mouseleave', () => img.style.transform = 'scale(1)');
+                    };
+                    
+                    img.onerror = () => {
+                        container.classList.remove('loading');
+                        container.classList.add('error');
+                        container.innerHTML = '<i class="fas fa-image"></i><div>Preview not available</div>';
+                    };
+                    
+                    img.src = link;
+                    img.alt = title;
+                    img.style.width = '100%';
+                    img.style.height = '100%';
+                    img.style.objectFit = 'cover';
+                }
+            };
+
+            // Set up intersection observer
+            const contentObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        loadContent(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                rootMargin: '50px' // Start loading slightly before the item comes into view
+            });
+
+            // Observe all certificate containers
+            certificateContainers.forEach(container => {
+                contentObserver.observe(container);
+            });
+        });
+
+        // Optimized filtering function
+        const debounce = (func, wait) => {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        };
+
+        const filterCertificates = debounce(() => {
+            const searchInput = document.getElementById('searchInput');
+            const filter = searchInput.value.toLowerCase();
+            const certificates = document.querySelectorAll('.certificate-card');
+            
+            requestAnimationFrame(() => {
+                certificates.forEach(cert => {
+                    const title = cert.querySelector('h3').textContent.toLowerCase();
+                    const description = cert.querySelector('p').textContent.toLowerCase();
+                    const tags = Array.from(cert.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase());
+                    
+                    if (title.includes(filter) || 
+                        description.includes(filter) || 
+                        tags.some(tag => tag.includes(filter))) {
+                        cert.style.display = 'block';
+                    } else {
+                        cert.style.display = 'none';
+                    }
+                });
+            });
+        }, 250);
+
+        // Category filtering with performance optimization
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const certificates = document.querySelectorAll('.certificate-card');
+        
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                const category = btn.dataset.category;
+                
+                requestAnimationFrame(() => {
+                    certificates.forEach(cert => {
+                        if (category === 'all' || cert.dataset.category === category) {
+                            cert.style.display = 'block';
+                        } else {
+                            cert.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
