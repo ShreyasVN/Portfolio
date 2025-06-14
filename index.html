@@ -949,14 +949,43 @@
             align-items: center;
             gap: 0.3em;
         }
-        .cert-view-link {
-            color: var(--accent);
+        .cert-button-hero {
+            background: var(--accent) !important;
+            color: white !important;
             font-weight: 600;
-            text-decoration: underline;
-            font-size: 0.95em;
-            margin-left: 0.5em;
+            font-size: 1.1em;
+            padding: 0.8em 1.5em;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(244, 114, 182, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5em;
+            margin-top: 1rem;
+            animation: glowPulse 2s infinite;
         }
-        .cert-view-link:hover { color: var(--primary); }
+        
+        .cert-button-hero:hover { 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(244, 114, 182, 0.6);
+            background: var(--secondary) !important;
+        }
+        
+        .cert-button-hero i {
+            font-size: 1.2em;
+        }
+        
+        @keyframes glowPulse {
+            0% {
+                box-shadow: 0 4px 12px rgba(244, 114, 182, 0.4);
+            }
+            50% {
+                box-shadow: 0 4px 24px rgba(244, 114, 182, 0.6);
+            }
+            100% {
+                box-shadow: 0 4px 12px rgba(244, 114, 182, 0.4);
+            }
+        }
         .contact-cta-card {
             display: flex;
             align-items: center;
@@ -5405,6 +5434,9 @@
             <a href="Shreyas N Resume.pdf" class="cta-btn" download>
                 <i class="fas fa-download"></i> Download Resume
             </a>
+            <a href="certificates.html" class="cta-btn cert-button-hero">
+                <i class="fas fa-certificate"></i> View My Certificates
+            </a>
         </div>
     </section>
 
@@ -5853,7 +5885,7 @@
     <!-- Add Certificates Button -->
     <a href="certificates.html" class="cert-button">
         <i class="fas fa-certificate"></i>
-        View My Certificates
+        View My Certificates <i class="fas fa-certificate"></i>
     </a>
 
     <script>
