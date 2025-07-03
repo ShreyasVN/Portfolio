@@ -2881,6 +2881,15 @@
             transition: opacity 0.3s;
             pointer-events: none;
         }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shreyas N Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
 
     <style>
 
@@ -5973,6 +5982,8 @@
             background: var(--text-light);
             color: #fff;
         }
+        }
+        
         * { box-sizing: border-box; }
         
         html { scroll-behavior: smooth; }
@@ -8527,6 +8538,28 @@
             box-shadow: 0 12px 36px rgba(127,90,240,0.18), 0 2px 8px rgba(44,182,125,0.13);
             transform: translateY(-8px) scale(1.025);
             border-left: 6px solid var(--accent);
+        }
+        
+        /* Additional card styles */
+            --bg-gradient: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            --card-gradient: linear-gradient(145deg, rgba(30, 41, 59, 0.95) 0%, rgba(30, 41, 59, 0.85) 100%);
+            --primary: #60A5FA;
+            --secondary: #34D399;
+            --accent: #F472B6;
+            --text: #F8FAFC;
+            --text-light: #CBD5E1;
+            --bg-dark: #181824;
+            --bg-light: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --glass: rgba(255,255,255,0.9);
+            --border-radius: 16px;
+            --box-shadow: 0 4px 16px rgba(79,70,229,0.1);
+            --sidebar-width: 250px;
+            --sidebar-bg: rgba(36, 37, 46, 0.85);
+            --sidebar-glass: rgba(36, 37, 46, 0.92);
+            --sidebar-blur: 18px;
+            --sidebar-border: 1.5px solid rgba(99,102,241,0.13);
+            --sidebar-shadow: 0 8px 32px rgba(79,70,229,0.13), 0 1.5px 6px rgba(16,185,129,0.08);
         }
         
         * { box-sizing: border-box; }
@@ -14007,7 +14040,7 @@
                     <i class="fas fa-download"></i> Download Resume
                 </a>
             </div>
-            <p class="about-summary-fade">Computer Science Engineering graduate with hands-on experience in software testing, system automation, and data analysis. Proven track record of developing end-to-end automated solutions and interactive dashboards that drive 30% improvement in business decision-making efficiency. Proficient in Python, SQL, API testing, and cloud deployment with experience in real-time monitoring, predictive analytics, and system optimization. Demonstrated expertise in building scalable applications, conducting performance testing, and implementing quality assurance processes. Strong background in machine learning pipeline development, database optimization, and cross-platform system integration. Seeking entry-level positions in Software Testing, System Engineering, or Data Analysis to leverage programming expertise and analytical skills in delivering robust, high-performance technical solutions.</p>
+            <p class="about-summary-fade">Motivated Computer Science graduate with a strong foundation in data analytics, machine learning, and visualization. Skilled in Python, SQL, Power BI, and Tableau, I translate complex datasets into actionable insights that drive business decisions. Through internships and hands-on projects, I've built predictive models, dynamic dashboards, and data-driven solutions. Adaptable, analytical, and eager to apply my skills in a professional setting, I am committed to making an impact through data-driven problem-solving.</p>
             <div class="about-stats-bar">
                 <div class="about-stat">
                     <i class="fas fa-briefcase"></i>
